@@ -19,12 +19,9 @@ exports.postAddBouquet = async (req, res) => {
   }
 };
 
-exports.getBouquetsByProvider = async (req, res) => {
+exports.getBouquets = async (req, res) => {
   try {
-    const { provider } = req.body;
-    const bouquets = await Bouquet.find({
-      provider: mongoose.Types.ObjectId(provider),
-    }).exec();
+    const bouquets = await Bouquet.find().exec();
     res.status(200).json(bouquets);
   } catch (err) {
     console.log(err);

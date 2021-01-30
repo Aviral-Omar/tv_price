@@ -11,17 +11,13 @@ const channelSchema = new Schema({
     type: Number,
     required: true,
   },
-  HdCounterpart: {
-    type: Schema.Types.ObjectId,
-    ref: 'Channel',
-  },
-  SdCounterpart: {
-    type: Schema.Types.ObjectId,
-    ref: 'Channel',
-  },
   quality: {
     type: String,
     required: true,
+  },
+  HdCounterpart: {
+    type: Schema.Types.ObjectId,
+    ref: 'Channel',
   },
   provider: {
     type: Schema.Types.ObjectId,

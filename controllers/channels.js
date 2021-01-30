@@ -17,11 +17,13 @@ exports.postAddChannel = async (req, res) => {
     const { name } = req.body;
     const { alcPrice } = req.body;
     const { provider } = req.body;
+    const { HdCounterpart } = req.body;
     const { quality } = req.body;
     const channel = await Channel.create({
       name,
       alcPrice,
       quality,
+      HdCounterpart,
       provider: mongoose.Types.ObjectId(provider),
     });
     const pr = await Provider.findById(provider, 'channels').exec();
