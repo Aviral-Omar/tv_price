@@ -15,10 +15,7 @@ app.use(bodyParser.json());
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader(
-    'Access-Control-Allow-Methods',
-    'GET, POST, PUT, PATCH, DELETE',
-  );
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
 });
@@ -34,6 +31,10 @@ mongoose
     useFindAndModify: false,
   })
   .then(() => {
-    app.listen(3000);
+    let port = process.env.PORT;
+    if (port == null || port == '') {
+      port = 3000;
+    }
+    app.listen(port);
   })
   .catch(err => console.log(err));
